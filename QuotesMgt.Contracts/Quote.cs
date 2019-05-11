@@ -20,8 +20,5 @@ namespace QuotesMgt.Contracts
         public int AuthorId { get; set; }
 
         public Author Author { get; set; }
-
-        [Required]
-       public int Rating { get; set; }
     }
 }
