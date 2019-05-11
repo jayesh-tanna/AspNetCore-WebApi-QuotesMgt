@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\QuotesMgt.Contracts\QuotesMgt.Contracts.csproj" />
+    <ProjectReference Include="..\QuotesMgt.Data\QuotesMgt.Data.csproj" />
+  </ItemGroup>
+
 </Project>

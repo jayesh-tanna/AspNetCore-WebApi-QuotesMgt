@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QuotesMgt.Business.Services;
+using QuotesMgt.Business.Services.Interfaces;
 using QuotesMgt.Data;
 
 namespace QuotesMgt.Api
@@ -24,7 +26,9 @@ namespace QuotesMgt.Api
 
             services.AddMvc().AddXmlSerializerFormatters();
 
-            services.AddDbContext<QuotesDBContext>(option => option.UseSqlServer(Configuration.GetConnectionString("QuoteDB")));
+            services.AddDbContext<QuotesDBContext>(option => option.UseSqlServer(Configuration.GetConnectionString("QuoteDB")), ServiceLifetime.Singleton);
+
+            services.Add(new ServiceDescriptor(typeof(IQuoteService), typeof(QuoteService), ServiceLifetime.Transient));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
